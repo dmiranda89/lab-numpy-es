@@ -2,10 +2,17 @@
 
 #[tu código aquí]
 
+import numpy as np
+
 
 #2. Imprime la versión de NUMPY y la configuración.
 
 #[tu código aquí]
+
+print("Versión de NUMPY:", np.__version__)
+
+#Configuración de Numpy
+np.show_config()
 
 
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
@@ -13,60 +20,96 @@
 
 #[tu código aquí]
 
+import numpy as np
+
+a = np.random.random((2, 3, 5))
+
 #4. Imprime a.
 
-#[tu código aquí]
+print(a)
+
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
 #[tu código aquí]
 
+import numpy as np
+
+b = np.ones((5, 2, 3))
+
 #6. Imprime b.
 
-#[tu código aquí]
+print(b)
+
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
-#[tu código aquí]
+same_size = a.size == b.size
+
+# Imprimir los tamaños y el resultado de la comparación
+print(f"Tamaño de a: {a.size}")
+print(f"Tamaño de b: {b.size}")
+print(f"¿Tienen a y b el mismo tamaño? {same_size}")
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
-#[tu código aquí]
+#Tienen diferentes dimensiones en su definición por lo que no es posible sumarlos
 
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
 #[tu código aquí]
 
+import numpy as np
+
+c = np.transpose(b, (1, 2, 0))
+
+print(c)
+
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
 #[tu código aquí]
 
+d = a + c
+
+print(d)
+
+#Entiendo que en NumPy, para sumar dos arrays, deben tener la misma forma o ser compatibles. Al transponer b para que tenga la forma (2, 3, 5), se convierte en un array compatible con a para poder sumarse.
+
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
 
 #[tu código aquí]
+#no me logro salir este ejercicio
 
 
 #12. Multiplica a y c. Asigna el resultado a e.
 
 #[tu código aquí]
+e = a * c
 
+
+print(e)
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
 
+'''En cuanto a valor absoluto de los números que contiene si pero los tipos son diferentes en a son enteros y en e son float'''
 
 
 #14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
 #[tu código aquí]
 
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
 #[tu código aquí]
-
+f=np.empty([2,3,5],)
+print(f'f={f}')
 
 """
 #16. Rellena los valores en f. Para cada valor en d, si es mayor que d_min pero menor que d_mean, asigna 25 al valor correspondiente en f.
@@ -79,7 +122,19 @@ Nota: no necesitas usar Numpy en esta pregunta.
 """
 
 #[tu código aquí]
-
+for a in range(2):
+        for b in range(3):
+                for c in range (5):
+                        if d[a][b][c]>d_min and d[a][b][c]<d_mean:
+                                f[a][b][c]=25
+                        elif d[a][b][c]>d_mean and d[a][b][c]<d_max:
+                                f[a][b][c]=75
+                        elif d[a][b][c]==d_mean:
+                                f[a][b][c]=50
+                        elif d[a][b][c]==d_min:
+                                f[a][b][c]=0
+                        elif d[a][b][c]==d_max:
+                                f[a][b][c]=100
 
 
 
